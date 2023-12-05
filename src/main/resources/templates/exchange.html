@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Spring Boot Application</title>
+</head>
+<body>
+<table border="1">
+<tr th:each="book: ${books}" cellpadding="5" cellspacing="5">
+    <td th:text="${book.id}" />
+    <td th:text="${book.name}" />
+    <td>
+        <a th:if="${book.booked}" href="/exchange" th:href="@{/exchange/return(id=${book.id})}">Вернуть</a>
+        <a th:if="${!book.booked}" href="/exchange" th:href="@{/exchange/reserve(id=${book.id})}">Забронировать</a>
+    </td>
+</tr>
+</table>
+
+</body>
+</html>

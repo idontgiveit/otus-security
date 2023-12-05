@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Spring Boot Application</title>
+</head>
+<body>
+<table border="1">
+<tr th:each="book: ${books}" cellpadding="5" cellspacing="5">
+    <td th:text="${book.id}" />
+    <td th:text="${book.name}" />
+    <td><a href="/books" th:href="@{/books/delete(id=${book.id})}">delete</a></td>
+    <td th:text="${book.booked} ? 'На руках' : 'Свободна'" />
+</tr>
+</table>
+<form method="post">
+    <input name="book" type="text" size="100"/>
+    <input type="submit"/>
+<form>
+
+</body>
+</html>
