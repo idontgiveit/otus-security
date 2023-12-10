@@ -1,6 +1,7 @@
 package ru.otus.library.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.library.dao.BooksRepository;
@@ -20,6 +21,7 @@ public class BookService {
         this.repository = repository;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('USER')")
     public List<Book> getBooks() {
         List<Book> result = new ArrayList<>();
         repository.findAll().forEach(result::add);

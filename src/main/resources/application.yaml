@@ -1,9 +1,14 @@
 server:
   port: 9191
+
+logging:
+  level:
+    root: debug
+
 spring:
   sql:
     init:
-#      mode: always
       platform: hsqldb
   jpa:
     defer-datasource-initialization: true
+
