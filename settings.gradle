@@ -1,2 +1,3 @@
 rootProject.name = 'secure-application'
+include 'rest-service'
 

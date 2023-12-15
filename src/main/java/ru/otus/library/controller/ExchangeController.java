@@ -22,7 +22,7 @@ public class ExchangeController {
     }
 
     @RequestMapping(value = "/exchange/reserve", method = RequestMethod.GET)
-    public RedirectView reserveBook(Model model, @RequestParam(value = "id") Long id) {
+    public RedirectView reserveBook(Model model, @RequestParam(value = "id") Long id) throws Exception{
         bookService.reserveBook(id);
         return new RedirectView("/exchange");
     }
