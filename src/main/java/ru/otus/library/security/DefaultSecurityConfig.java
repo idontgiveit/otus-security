@@ -39,10 +39,12 @@ public class DefaultSecurityConfig {
 
                 })
                 .csrf(csrf -> {
-//                    csrf.csrfTokenRequestHandler(csrfRequestHandler);
                     csrf.csrfTokenRepository(new HttpSessionCsrfTokenRepository());
                 })
-                .formLogin(Customizer.withDefaults());
+                .oauth2Login(Customizer.withDefaults())
+                .oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults()));
+
+//                .formLogin(Customizer.withDefaults());
 
         return http.build();
     }

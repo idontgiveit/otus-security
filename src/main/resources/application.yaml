@@ -10,8 +10,6 @@ server:
     store: truststore.p12
     password: 123456
 
-
-
 logging:
   level:
     root: debug
@@ -22,4 +20,21 @@ spring:
       platform: hsqldb
   jpa:
     defer-datasource-initialization: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/realm_test
+      client:
+        registration:
+          keycloak:
+            client-id: books
+            client-secret: b8ppT9ZWWltpHq9cCnW2cAroCLC93lmn
+            authorization-grant-type: authorization_code
+            scope: openid
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/realm_test
+            user-name-attribute: preferred_username
 
